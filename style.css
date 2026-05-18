@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(41, 85, 124);
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
