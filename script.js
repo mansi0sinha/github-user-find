@@ -3,7 +3,7 @@ let result = document.getElementById("result");
 result.style.display = "none";
 
 let text = document.getElementById("searchTxt");
-3
+
 btn.addEventListener("click", function () {
     result.textContent = "Loading...";
     console.log(text.value);
@@ -20,33 +20,54 @@ btn.addEventListener("click", function () {
             let contentEle = document.createElement("div");
             contentEle.textContent = "User Not Found";
             result.appendChild(contentEle);
-        } else {
-            let contentImage = document.createElement("img");
-            let contentName = document.createElement("div");
-            let contentLogin = document.createElement("div");
-            let contentFollower = document.createElement("div");
-            let Following = document.createElement("div");
-            let Repos = document.createElement("div");
-            let profile = document.createElement("a");
-            profile.textContent = "Profile Button";
-            profile.href = data.html_url;
+        } 
+        else {
 
-            console.log(data.avatar_url);
-            contentImage.src = data.avatar_url;
-            contentName.textContent = "Name-" + data.name;
-            contentFollower.textContent = "Follower-" + data.followers;
-            contentLogin.textContent = "Login-" + data.login;
-            Following.textContent = "Following:-" + data.following;
-            Repos.textContent = "Repository:-" + data.public_repos;
-            result.appendChild(contentImage);
-            result.appendChild(contentName);
-            result.appendChild(contentLogin);
-            result.appendChild(contentFollower);
-            result.appendChild(Following);
-            result.appendChild(Repos);
-            result.appendChild(profile);
+    result.innerHTML = `
+    
+    <img 
+        src="${data.avatar_url}"
+        alt="${data.login}"
+    >
 
-        }
+    <div class="name">
+        ${data.name || "No Name"}
+    </div>
+
+    <div class="username">
+        @${data.login}
+    </div>
+
+    <div class="stats">
+
+        <div class="card">
+            <h2>${data.public_repos}</h2>
+            <span>Repositories</span>
+        </div>
+
+        <div class="card">
+            <h2>${data.followers}</h2>
+            <span>Followers</span>
+        </div>
+
+        <div class="card">
+            <h2>${data.following}</h2>
+            <span>Following</span>
+        </div>
+
+    </div>
+
+    <a
+        href="${data.html_url}"
+        target="_blank"
+        class="profile-btn"
+    >
+        Visit Profile
+    </a>
+
+    `;
+//console.log(result.innerHTML);
+}
     });
 
 });

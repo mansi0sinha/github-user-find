@@ -5,21 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub User Find</title>
     <link href="style.css" rel="stylesheet">
+    
 </head>
 <body>
-    <div class="search">
-        <div class="txt">
-    <label for="searchTxt">Enter Account name to Search:-</label>
+
+<div class="background">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
 </div>
-<div class="input">
-    <input type="text" id="searchTxt" name="searchTxt"/>
-    <input type="submit" id="submitSearch"/>
-    </div>
-     <div id="result">
+
+<div class="search">
+
+    <h1>GitHub Finder</h1>
+    <p>Find Any Developer Profile Instantly</p>
+
+    <div class="input">
+
+        <input
+        type="text"
+        id="searchTxt"
+        placeholder="Enter GitHub Username"
+        >
+
+        <button  type="button" id="submitSearch">
+            🔍
+        </button>
 
     </div>
-    </div>
-   
-    <script src="script.js"></script>
+
+    <div id="result"></div>
+
+</div>
+<script src="script.js"></script>
 </body>
 </html>

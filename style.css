@@ -1,9 +1,326 @@
-body{
-    background-color: rgb(41, 85, 124);
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+
+    padding:40px 20px;
+
+    background:#070710;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
+.blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+}
+
+.blob1{
+    width:450px;
+    height:450px;
+
+    background:#7b2cff;
+
+    top:-150px;
+    left:-150px;
+
+    animation:move1 10s infinite alternate ease-in-out;
+}
+
+.blob2{
+    width:400px;
+    height:400px;
+
+    background:#bb00ff;
+
+    bottom:-150px;
+    right:-150px;
+
+    animation:move2 8s infinite alternate ease-in-out;
+}
+
+@keyframes move1{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(180px);
+    }
+}
+
+@keyframes move2{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-150px);
+    }
+}
+
 .search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    width:min(700px,95vw);
+
+    padding:40px;
+
+    background:rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 40px rgba(123,44,255,.3),
+        0 0 80px rgba(123,44,255,.15);
+
+    z-index:10;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #d7a6ff
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+p{
+    color:#bfbfbf;
+    margin-bottom:30px;
+}
+
+.input{
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+#searchTxt{
+    flex:1;
+
+    padding:18px;
+
+    border:none;
+    outline:none;
+
+    border-radius:15px;
+
+    background:#11111c;
+
+    color:white;
+
+    font-size:1rem;
+
+    border:1px solid transparent;
+
+    transition:.3s;
+}
+
+#searchTxt:focus{
+    border-color:#8f00ff;
+
+    box-shadow:
+        0 0 20px rgba(143,0,255,.5);
+}
+
+#submitSearch{
+    width:70px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:1.3rem;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #7b2cff,
+        #bb00ff
+    );
+
+    transition:.3s;
+}
+
+#submitSearch:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(187,0,255,.6);
+}
+
+#result{
+    width:100%;
+
+    margin-top:30px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:18px;
+}
+
+#result img{
+    width:180px;
+    height:180px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:5px solid #8f00ff;
+
+    box-shadow:
+        0 0 30px #8f00ff,
+        0 0 70px rgba(143,0,255,.4);
+}
+
+.name{
+    font-size:2rem;
+    font-weight:700;
+    color:white;
+}
+
+.username{
+    color:#c99cff;
+    font-size:1rem;
+}
+
+.stats{
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-top:10px;
+}
+
+.card{
+    min-width:140px;
+
+    padding:20px;
+
+    background:#11111c;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:18px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 0 20px rgba(143,0,255,.5);
+}
+
+.card h2{
+    color:white;
+    margin-bottom:5px;
+}
+
+.card span{
+    color:#bdbdbd;
+}
+
+.profile-btn{
+    display:inline-block;
+
+    margin-top:10px;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:15px;
+
+    background:linear-gradient(
+        135deg,
+        #7b2cff,
+        #bb00ff
+    );
+
+    transition:.3s;
+}
+
+.profile-btn:hover{
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 30px rgba(187,0,255,.7);
+}
+
+@media(max-width:600px){
+
+    .search{
+        padding:25px;
+    }
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    .input{
+        flex-direction:column;
+    }
+
+    #submitSearch{
+        width:100%;
+        height:55px;
+    }
+
+    .stats{
+        flex-direction:column;
+    }
+
+    .card{
+        width:100%;
+    }
+
+    #result img{
+        width:140px;
+        height:140px;
+    }
 }
